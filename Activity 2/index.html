@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .query-container {
+            margin-bottom: 20px;
+        }
+        .query-container input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .query-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff0095;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .query-container button:hover {
+            background-color: #ee01f7;
+        }
+        .results {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Library</h1>
+    <div class="query-container">
+        <input type="text" id="xpathQuery" placeholder="Enter XPath query (e.g., /music/song/songTitle)">
+        <button onclick="executeXPathQuery()">Run Query</button>
+    </div>
+    <div class="results" id="queryResults">
+        <!-- Query results will be displayed here -->
+    </div>
+    <iframe src="music.xml" width="100%" height="600px" style="border:none;"></iframe>
+
+    <script>
+        // Function to execute XPath query
+        function executeXPathQuery() {
+            const query = document.getElementById('xpathQuery').value;
+            const resultsDiv = document.getElementById('queryResults');
+
+            // Load the XML file
+            fetch('music.xml')
+                .then(response => response.text())
+                .then(xmlString => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+
+                    // Evaluate the XPath query
+                    const result = document.evaluate(
+                        query,
+                        xmlDoc,
+                        null,
+                        XPathResult.ANY_TYPE,
+                        null
+                    );
+
+                    // Display the results
+                    let output = '';
+                    let node = result.iterateNext();
+                    while (node) {
+                        output += `<div>${node.textContent}</div>`;
+                        node = result.iterateNext();
+                    }
+
+                    resultsDiv.innerHTML = output || '<div>No results found.</div>';
+                })
+                .catch(error => {
+                    resultsDiv.innerHTML = `<div>Error: ${error.message}</div>`;
+                });
+        }
+    </script>
+</body>
+</html>

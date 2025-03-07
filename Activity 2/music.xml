@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="music.xsl"?>
+<music>
+    <song id="1">
+        <songTitle>Sweet</songTitle>
+        <artist>Cigarettes After Sex</artist>
+        <albums>
+            <album>X's</album>
+            <album>Cry</album>
+            <album>CAS</album>
+        </albums>
+        <debutYear>2017</debutYear>
+    </song>
+    <song id="2">
+        <songTitle>Complicated</songTitle>
+        <artist>Avril Lavigne</artist>
+        <albums>
+            <album>Let Go</album>
+            <album>Love Sux</album>
+            <album>Head Abovee Water</album>
+        </albums>
+        <debutYear>2002</debutYear>
+    </song>
+    <song id="3">
+        <songTitle>Love.</songTitle>
+        <artist>Wave To Earth</artist>
+        <albums>
+            <album>Flaws and All</album>
+            <album>Play with Earth</album>
+            <album>Wave</album>
+        </albums>
+        <debutYear>2019</debutYear>
+    </song>
+    <song id="4">
+        <songTitle>About You</songTitle>
+        <artist>The 1975</artist>
+        <albums>
+            <album>Live From Gorilla</album>
+            <album>1975 Deluxe</album>
+            <album>At Their Very Best</album>
+        </albums>
+        <debutYear>2013</debutYear>
+    </song>
+    <song id="5">
+        <songTitle>The Only Exception</songTitle>
+        <artist>Paramore</artist>
+        <albums>
+            <album>This Is Why</album>
+            <album>After Laughter</album>
+            <album>Riot!</album>
+        </albums>
+        <debutYear>2005</debutYear>
+    </song>
+</music>
